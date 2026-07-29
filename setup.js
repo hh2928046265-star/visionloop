@@ -18,10 +18,11 @@ const psLines = [
   '$lnk = Join-Path $desktop "VisionLoop.lnk"',
   '$s = $ws.CreateShortcut($lnk)',
   '$s.TargetPath = "cmd.exe"',
-  '$s.Arguments = "/c cd /d " + [char]34 + $projectDir + [char]34 + " && npm run launch"',
+  '$s.Arguments = "/k cd /d " + [char]34 + $projectDir + [char]34 + " && npm run launch"',
   '$s.WorkingDirectory = $projectDir',
   '$s.IconLocation = "C:\\Windows\\System32\\imageres.dll,34"',
   '$s.Description = "VisionLoop"',
+  '$s.WindowStyle = 1',
   '$s.Save()',
   'Write-Host "Shortcut created: " $lnk',
 ];
