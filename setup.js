@@ -11,26 +11,27 @@ const psPath = path.join(os.tmpdir(), "vl-setup.ps1");
 console.log("VisionLoop Setup");
 console.log("================");
 
+// Write launcher bat with UTF-8 BOM (required for Chinese display in cmd)
+const batPath = path.join(projectDir, "启动VisionLoop.bat");
+const batContent = "\uFEFF" + [
+  "@echo off",
+  "chcp 65001 >nul",
+  "echo ================================",
+  "echo   VisionLoop - AI视觉导演工作台",
+  "echo ================================",
+  "echo.",
+  "echo 正在启动...",
+  "cd /d " + projectDir,
+  "npm run launch",
+  "pause",
+].join("\r\n");
+fs.writeFileSync(batPath, batContent, "utf8");
+
 // CRITICAL: PS script must be UTF-16LE for Chinese path support
 const psLines = [
   '$desktop = "' + desktop.replace(/\\/g, "\\\\") + '"',
   '$projectDir = "' + projectDir.replace(/\\/g, "\\\\") + '"',
   '$bat = Join-Path $projectDir "启动VisionLoop.bat"',
-  '',
-  '# Create launcher bat if missing',
-  'if (-not (Test-Path $bat)) {',
-  '  @"',
-  '  @echo off',
-  '  echo ================================',
-  '  echo   VisionLoop - AI视觉导演工作台',
-  '  echo ================================',
-  '  echo.',
-  '  echo 正在启动...',
-  '  npm run launch',
-  '  pause',
-  '  "@ | Out-File -FilePath $bat -Encoding Default',
-  '}',
-  '',
   '$ws = New-Object -ComObject WScript.Shell',
   '$lnk = Join-Path $desktop "VisionLoop.lnk"',
   '$s = $ws.CreateShortcut($lnk)',

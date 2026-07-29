@@ -1,7 +1,10 @@
-@echo off
-echo ================================
-echo   VisionLoop - AIÊÓ¾õµ¼Ñİ¹¤×÷Ì¨
-echo ================================
-echo.
-echo ÕıÔÚÆô¶¯...
-npm run launch
+ï»¿@echo off
+chcp 65001 >nul
+echo ================================
+echo   VisionLoop - AIè§†è§‰å¯¼æ¼”å·¥ä½œå°
+echo ================================
+echo.
+echo æ­£åœ¨å¯åŠ¨...
+cd /d C:\Users\13336\Documents\æ•…äº‹æ¿\storyboard-studio
+npm run launch
+pause
