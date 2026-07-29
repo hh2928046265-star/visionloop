@@ -48,10 +48,19 @@
 
 ## 快速启动
 
-### 1. 安装依赖
+### 1. 克隆并安装
 
 \\ash
+git clone https://github.com/hh2928046265-star/visionloop.git
+cd visionloop
 npm install
+\
+安装完成后桌面会自动生成 **VisionLoop 快捷方式**，双击启动。
+
+也可以手动启动：
+
+\\ash
+npm run launch    # 启动服务器并自动打开浏览器
 \
 ### 2. 启动 Ollama（可选，使用本地模型）
 

@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "launch": "concurrently -n server,browser -c cyan,green \"next dev -p 3000\" \"wait-on http://localhost:3000 && start http://localhost:3000\"",
+    "setup": "node setup.js",
+    "postinstall": "node setup.js"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.20",
@@ -36,9 +39,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.11",
+    "open-cli": "^9.0.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wait-on": "^9.1.0"
   }
 }
